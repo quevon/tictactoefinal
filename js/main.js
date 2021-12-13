@@ -346,9 +346,6 @@ function gameBot(){
         boardClickHandler(gridLoc)
     }
 }
-
-
-
 //Helpers
 function bodyContentReplace(htmlTemplate){
 
@@ -429,18 +426,11 @@ function inputChecker(boxAreaNum, x, y) {
 
     if(current_character == playerTwoCharacter && gameMode == defConfig.gameModePvBot
         && !(alreadytie ||alreadywin)){
-
             setTimeout(() => {
-
                 gameBot()
-
-            }, Math.floor(Math.random() * (maxTime - minTime + 1) + minTime) * 1000);
-
-        
-        
+            }, Math.floor(Math.random() * (maxTime - minTime + 1) + minTime) * 1000);     
     }
 }
-
 function saveInputHistoryFunc(){
 
     let input_grid = document.getElementsByClassName("inner_area")
@@ -528,7 +518,6 @@ function boardChecker(tempboard) {
         return false
     }
     
-
     //Tie
     if (input_total  == box_area.length) {
 
@@ -541,10 +530,7 @@ function boardChecker(tempboard) {
 
         showNavigatorsHandler()
     }
-
 }
-
-
 //if the game was ended
 function gameEndFunc() {
 
@@ -557,7 +543,6 @@ function gameEndFunc() {
     alreadywin = true
 
     showNavigatorsHandler()
-
     boardSidebarsFunc()
 
     if (previous_character == playerOneCharacter) {
@@ -572,47 +557,32 @@ function gameEndFunc() {
 function showNavigatorsHandler() {
 
     visVisble("nav_header")
-
     visVisble("nav_footer")
 
     let nav_prev = document.getElementById("nav_prev")
     let nav_next = document.getElementById("nav_next")
 
     if(input_total != 1 ){
-
         nav_prev.disabled = false
         nav_prev.style.visibility = "visible"
-
     }else{
-
         nav_prev.disabled = true
         nav_prev.style.visibility = "hidden"
     }
-
-   
     if(input_total == moves.length){
-
         nav_next.disabled = true
         nav_next.style.visibility = "hidden"
-
     }else {
-
         nav_next.disabled = false
         nav_next.style.visibility = "visible"
-        
     }   
-
     if (!hotFixNext){
-
         hotFixNext = true
         nav_next.disabled = true
         nav_next.style.visibility = "hidden"
-
     }
 }
-
 function  lastInputChecker(){
-
     let input_grid = document.getElementsByClassName("inner_area")
 
     moves[input_total] = []
@@ -624,40 +594,26 @@ function  lastInputChecker(){
 
     for (let index = 0; index < 3; index++) {
         if (input_grid[index].textContent == ""){
-
             lastCharacter(index)
             rowOne.push(input_grid[index].textContent = current_character)
-
         }else{
             rowOne.push(input_grid[index].textContent)
-
         }
     }
-
     for (let index = 3; index <6; index++) {
         if (input_grid[index].textContent == ""){
-
             lastCharacter(index)
             rowTwo.push(input_grid[index].textContent = current_character)
-
         }else{
             rowTwo.push(input_grid[index].textContent)
-
         }
     }
-
-
     for (let index = 6; index < 9; index++) {
         if (input_grid[index].textContent == ""){
-
             lastCharacter(index)
             rowThree.push(input_grid[index].textContent = current_character)
-
         }else{
-
             rowThree.push(input_grid[index].textContent)
-
-
         }
     }
 
@@ -671,28 +627,19 @@ function  lastInputChecker(){
 }
 
 function lastCharacter (boxAreaNum){
-
     let box_area = document.getElementsByClassName("box_area")
     let input_grid = document.getElementsByClassName("inner_area")
-
     if (current_character == playerOneCharacter) {
-
         input_grid[boxAreaNum].textContent = playerOneCharacter
         box_area[boxAreaNum].style.backgroundColor = playerOneColor
-
     } else {
-
         input_grid[boxAreaNum].textContent = playerTwoCharacter
         box_area[boxAreaNum].style.backgroundColor = playerOneCharacter
-
     }
-
     tempMoves.push({ "board_loc": boxAreaNum, "character": current_character })
-
 }
 
 async function boardSidebarsFunc() {
-
     let sidebarone = document.getElementById("listbars_one")
     let sidebartwo = document.getElementById("listbars_two")
 
@@ -700,26 +647,19 @@ async function boardSidebarsFunc() {
     sidebartwo.innerHTML = ""
 
     for (item in game_history) {
-
         let newLiOne = document.createElement('li')
         let newLiTwo = document.createElement('li')
 
         if (game_history[item]["win"] == game_history[item]["pone"]) {
-
             newLiOne.appendChild(document.createTextNode("Win"))
             newLiTwo.appendChild(document.createTextNode("Loss"))
-
         } else if (game_history[item]["win"]  == game_history[item]["ptwo"]) {
-
             newLiOne.appendChild(document.createTextNode("Loss"))
             newLiTwo.appendChild(document.createTextNode("Win"))
-
         } else {
-
             newLiOne.appendChild(document.createTextNode("Tie"))
             newLiTwo.appendChild(document.createTextNode("Tie"))
         }
-
         newLiOne.setAttribute("class", "sidebars")
         newLiTwo.setAttribute("class", "sidebars")
 
@@ -727,14 +667,9 @@ async function boardSidebarsFunc() {
         sidebartwo.appendChild(newLiTwo)
     }
 }
-
-
 function showGameHistoryFunc() {
-
     bodyContentReplace(gameHistoryHTML)
-
     let history_list = document.getElementById("game_history")
-
     history_list.innerHTML = ""
 
     for (item in game_history) {
@@ -754,14 +689,10 @@ function showGameHistoryFunc() {
 
         history_list.appendChild(newList)
     }
-
     document.getElementById("history_close").addEventListener("click", function(){
-
         showPreviousGameFunc(game_history.length - 1)
-
     })
     let getReviewButtons = document.getElementsByClassName("review_button")
-
     //getReviewButtons listeners
     for (let boxnum = 0; boxnum < getReviewButtons.length; boxnum++) {
         getReviewButtons[boxnum].addEventListener("click", function () {
@@ -771,7 +702,6 @@ function showGameHistoryFunc() {
         })
     }
 }
-
 //Board Manipulators
 function gameResetFunc(){
 
@@ -811,14 +741,11 @@ function gameResetFunc(){
     player_turn.style.color = playerOneColor
 
     restoreBoardFunc()
-
     saveInputHistoryFunc()
-
     boardSidebarsFunc()
 }
 
 function showPreviousGameFunc(gameId) {
-
     alreadywin = true
     alreadytie = true
 
@@ -830,30 +757,22 @@ function showPreviousGameFunc(gameId) {
     input_total = moves.length
 
     if (game_history[gameId]["win"] == game_history[gameId]["pone"]){
-
         player_turn.textContent = `${game_history[gameId]["win"]} wins.`
         player_turn.style.color = playerOneColor
-
     }else if (game_history[gameId]["win"] == game_history[gameId]["ptwo"]){
-
         player_turn.textContent = `${game_history[gameId]["win"]} wins.`
         player_turn.style.color = playerTwoColor
-
     }else{
         input_total = moves.length
         player_turn.textContent = `Tie`
         player_turn.style.color = "white"
     }
-
     displayBoardHistoryFunc(moves.length - 1)
-
-    showNavigatorsHandler()
-
+    showNavigatorsHandler(
     boardSidebarsFunc()
 }
 
 function displayBoardHistoryFunc(moveNum){
-
     let input_grid = document.getElementsByClassName("inner_area")
     let box_area = document.getElementsByClassName("box_area")
 
@@ -861,44 +780,32 @@ function displayBoardHistoryFunc(moveNum){
     let boxAreaNum = 0
 
     displayMoves.forEach(rows => {
-
         rows.forEach(element => {
-
             if (element == playerOneCharacter) {
-
                 input_grid[boxAreaNum].textContent = playerOneCharacter
                 box_area[boxAreaNum].style.backgroundColor = playerOneColor
                 boxAreaNum++
-
             } else if (element == playerTwoCharacter){
-
                 input_grid[boxAreaNum].textContent = playerTwoCharacter
                 box_area[boxAreaNum].style.backgroundColor = playerTwoColor
                 boxAreaNum++
-
             }else{
-
                 box_area[boxAreaNum].style.backgroundColor = defaultBkgd
                 input_grid[boxAreaNum].textContent = ""
                 boxAreaNum++
             }
-
         });
-    });
-    
+    });  
 }
 
 function restoreBoardFunc(){
-
     let box_area = document.getElementsByClassName("box_area")
     let input_grid = document.getElementsByClassName("inner_area")
 
     for (let boxnum = 0; boxnum != box_area.length; boxnum++) {
-
         box_area[boxnum].style.backgroundColor = defaultBkgd
         input_grid[boxnum].innerHTML = ""
     }
-
 }
 
 function playerRandomizerFuc(){
@@ -907,11 +814,8 @@ function playerRandomizerFuc(){
     let rndTwo = chracterRandomizer(1).trim()
 
     if (rndOne == rndTwo){
-        
         playerRandomizerFuc()
-   
-    }else{
-       
+    }else{ 
         document.getElementById("character_custom_one").value = rndOne
         document.getElementById("character_custom_two").value = rndTwo
     }
@@ -940,15 +844,12 @@ function pushToGameHistory(winCharacter){
 function visVisble(name) {
     let elementId = document.getElementById(name);
     elementId.style.visibility = "visible"
-
 }
-
 function visHidden(name) {
     let elementId = document.getElementById(name);
     elementId.style.visibility = "hidden"
 
 }
-
 function startFadeIn(index){
     let box_area = document.getElementsByClassName("box_area")
     if(index < box_area.length){
@@ -959,7 +860,6 @@ function startFadeIn(index){
         }, 150);
     }
 }
-
 //HTML Templates
 const gameModeHTML = 
                     `<div  class='main_board' id='welcome_grid'>
