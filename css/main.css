@@ -1,0 +1,529 @@
+/* Global CSS */
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Special Elite', sans-serif;
+  font-size: 2.80vh;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none; 
+     -moz-user-select: none; 
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#game_title{
+  margin: 2vh;
+  text-align: center;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+.player_title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+body {
+  background: rgb(2,0,36);
+  height: 100%;
+}
+
+p{
+  text-align: center;
+}
+
+ul li{
+    
+    display: inline-block;
+    text-align: center;
+    margin: 2vh;
+    list-style: none;
+
+}
+
+.main_board {
+  display: grid;
+  grid-template-rows: 100vh;
+  grid-template-columns: 100vw;
+  grid-template-areas:
+  "welcome_body"
+
+}
+.restart{
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+
+}
+.restart:focus{
+  border: none;
+}
+
+.child_board{
+  margin: auto;
+  border-radius: 14px;
+  background-color: cadetblue;
+
+}
+
+/* Game Mode*/
+#game_mode{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#mode_pvp{
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #bec8c9;
+}
+
+#mode_pvbot{
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #b2a094;
+}
+
+#mode_pvp:hover,#mode_pvbot:hover{
+  opacity: .5;
+}
+
+/* Default Charater */
+#game_title {
+  margin: 2vh;
+  text-align: center;
+  font-weight: bold;
+  font-size: 5vw;
+}
+#player_choose ul{
+  display: flex;
+  justify-content: space-between;
+}
+#character_x{
+  width: 100%;
+  font-size: 15vw;
+}
+
+#character_o{
+  width: 100%;
+  font-size: 15vw;
+
+}
+
+#character_x:hover{
+  cursor: pointer;
+  color: red;
+}
+#character_o:hover{
+  color: red;
+  cursor: pointer;
+
+}
+
+#nav_custom_character{
+  border: none;
+  width: 20vw;
+  border-radius: 14px 14px 0 0 ;
+  clear: both;
+  margin: 0 auto 0 auto;
+  background-color: #d81b60;
+  cursor: pointer;
+  font-size: 2vw;
+
+}
+#nav_custom_character:hover{
+ opacity: .5;
+
+}
+
+/* Custom Characters */
+.player_character_custom{
+  display: -ms-inline-grid;
+  display: -moz-inline-grid;
+  display: inline-grid;
+}
+
+#character_custom_one{
+  background: #bec8c9;
+  width : 20vw;
+  height: 20vw;
+  font-size: 15vw;
+  text-align: center;
+}
+
+#character_custom_two{
+  background: #b2a094;
+  width : 20vw;
+  height: 20vw;
+  font-size: 15vw;
+  text-align: center;
+}
+
+#nav_input_custom_buttons{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+#nav_input_custom_rdn{
+  border: none;
+  border-radius: 14px;
+  padding: 2vh;
+  color: white;
+  cursor: pointer;
+  background-color:grey;
+  margin-left: 1vh;
+}
+#nav_input_custom_rdn:hover, #cancel:hover, #confirm:hover, #nav_input_custom_cancel:hover, #nav_input_custom_confirm:hover{
+  opacity: .5;
+ }
+
+ 
+/* Character Confirmation */
+#selected_one{
+  font-weight: bold;
+  font-size: 4vw;
+  color: #bec8c9;
+}
+
+label{
+  margin: 5px;
+}
+
+#selected_two{
+  font-weight: bold;
+  font-size: 4vw;
+  color: rgb(216, 191, 174);
+}
+
+.concan{
+  list-style: none;
+  font-size: 3px;
+  text-align: center;
+  margin: auto;
+}
+
+#charac_cancel, #nav_input_custom_cancel{
+  border: none;
+  border-radius: 14px;
+  padding: 2vh;
+  color: white;
+  cursor: pointer;
+  background-color: #d50000;
+}
+
+#charac_confirm, #nav_input_custom_confirm{
+  border: none;
+  border-radius: 14px;
+  padding: 2vh;
+  margin-left: 1vh;
+  color: white;
+  cursor: pointer;
+  background-color: #6200ea;
+}
+
+/* Main Board */
+
+/* Main Grid */
+#main_grid {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto   ;
+  grid-template-areas:
+    ". head ."
+    ". holder ."
+    "playerone board playertwo"
+    ". foot .";
+  height: 100vh;
+}
+
+h3 {
+  text-align: center;
+  margin: 2vw;
+}
+/* Header */
+
+#nav_header {
+  grid-area: head;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh auto auto auto;
+}
+
+.nav-buttons {
+  border: none;
+  border-radius: 6px;
+  height: 5vh;
+  width: 10vw;
+  margin-right: 1vw;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  font-size: 2vw;
+}
+
+.nav-buttons:hover {
+  opacity: 0.5;
+}
+
+#nav_game {
+  background: #00796b;
+}
+
+#nav_setting {
+  background: #f57c00;
+}
+
+/* holder */
+#main_title{
+  grid-area: holder;
+  margin: 10px  auto 10px auto;
+  
+}
+
+#main_title_holder{
+  font-size: 2em;
+}
+
+
+/* Sidebars */
+
+.side_bars {
+  border-radius: 1vw;
+  border: none;
+  max-height: auto;
+}
+
+.side_bars::-webkit-scrollbar {
+  margin: 5px 0 5px 0;
+  width: 1em;
+}
+ 
+.side_bar::-webkit-scrollbar-track {
+  margin: 5px 0 5px 0;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.side_bars::-webkit-scrollbar-thumb {
+  margin: 5px 0 5px 0;
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+#playerone {
+  grid-area: playerone;
+  background-color: #56baed;
+  margin: 0 auto 0 auto;
+}
+
+#playerone{
+  grid-area: playerone;
+  background-color: #56baed;
+  margin: 0 auto 0 auto;
+}
+
+#playertwo {
+  grid-area: playertwo;
+  background-color: #56baed;
+    margin: 0 auto 0 auto;
+
+}
+
+/* Board */
+
+#board {
+  grid-area: board;
+  display: grid;
+  border-radius: 14px;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  min-width: 75vh;
+  min-height: 75vh;
+  margin: auto;
+}
+
+.box_area {
+
+  background-color: #252b31;
+  border-radius: 14px;
+  margin: 1px;
+  cursor: pointer;
+  visibility: hidden;
+ 
+}
+
+.box_area p {
+  align-content: center;
+  padding-top: 40px;
+  font-size: 6.5em;
+  margin: auto;
+  height: 100%;
+}
+
+
+/* Nav Footer */
+#nav_footer {
+  display: flex;
+  grid-area: foot;
+  margin: 1vh auto 2vh auto;
+}
+
+#nav_prev {
+  background: #91978b;
+}
+
+#nav_next {
+  background: #d3ad8d;
+}
+
+.sidebars{
+  display: block;
+  margin: auto;
+}
+
+
+/* Game_history */
+#history_grid{
+  display: grid;
+
+}
+
+#history_child{
+    margin: auto;
+    border-radius: 14px;
+    background-color: cadetblue;
+    max-height: 80vh;
+    min-height: 50vh;
+    overflow: auto;
+}
+
+#game_history {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+
+}
+
+#button_div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+
+#history_close{
+  background: none;
+  align-items: flex-end;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  
+}
+
+.history_list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.review_button{
+  border: none;
+  border-radius: 6px;
+  height: 5vh;
+  width: 10vw;
+  margin-left: 4vw;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  color: white;
+  background: gray;
+
+}
+
+.review_button:hover{
+  opacity: .5;
+}
+
+/* @media only screen and (max-width: 880px) {
+  .side_bars{
+    display: none;
+    margin: auto;
+
+  }
+
+  .review_button{
+    width: auto;
+  }
+} */
+
+
+@media only screen and (max-width: 550px) {
+  .side_bars{
+    display: none;
+    margin: auto;
+
+  }
+
+  #board{
+    grid-template-columns: auto  auto auto;
+
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .box_area p {
+    font-size: 10vh;
+  }
+
+  .box_area{
+    width: 25vw;
+    height: 25vw;
+  }
+}
+
+@media only screen and (max-width: 319px) {
+  .side_bars{
+    display: none;
+    margin: auto;
+
+  }
+
+    #main_grid{
+        grid-template-columns:auto auto auto;
+    }
+    #board{
+      width: 70vw;
+      height: 70vw;
+    }
+  
+
+    .box_area p {
+      font-size: 15vh;
+  }
+
+  .box_area{
+    width: 10vh;
+    height: 10vh;
+  }
+}
+
+.flipped {
+  -webkit-transform: rotateY( 180deg );
+  -moz-transform: rotateY( 180deg );
+  -o-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
+}
