@@ -762,17 +762,22 @@ function showPreviousGameFunc(gameId) {
     }else if (game_history[gameId]["win"] == game_history[gameId]["ptwo"]){
         player_turn.textContent = `${game_history[gameId]["win"]} wins.`
         player_turn.style.color = playerTwoColor
+
     }else{
         input_total = moves.length
         player_turn.textContent = `Tie`
         player_turn.style.color = "white"
     }
+
     displayBoardHistoryFunc(moves.length - 1)
-    showNavigatorsHandler(
+
+    showNavigatorsHandler()
+
     boardSidebarsFunc()
 }
 
 function displayBoardHistoryFunc(moveNum){
+
     let input_grid = document.getElementsByClassName("inner_area")
     let box_area = document.getElementsByClassName("box_area")
 
@@ -780,7 +785,9 @@ function displayBoardHistoryFunc(moveNum){
     let boxAreaNum = 0
 
     displayMoves.forEach(rows => {
+
         rows.forEach(element => {
+
             if (element == playerOneCharacter) {
                 input_grid[boxAreaNum].textContent = playerOneCharacter
                 box_area[boxAreaNum].style.backgroundColor = playerOneColor
@@ -789,13 +796,16 @@ function displayBoardHistoryFunc(moveNum){
                 input_grid[boxAreaNum].textContent = playerTwoCharacter
                 box_area[boxAreaNum].style.backgroundColor = playerTwoColor
                 boxAreaNum++
+
             }else{
+
                 box_area[boxAreaNum].style.backgroundColor = defaultBkgd
                 input_grid[boxAreaNum].textContent = ""
                 boxAreaNum++
             }
         });
-    });  
+    });
+    
 }
 
 function restoreBoardFunc(){
@@ -806,6 +816,7 @@ function restoreBoardFunc(){
         box_area[boxnum].style.backgroundColor = defaultBkgd
         input_grid[boxnum].innerHTML = ""
     }
+
 }
 
 function playerRandomizerFuc(){
@@ -813,9 +824,9 @@ function playerRandomizerFuc(){
     let rndOne = chracterRandomizer(1).trim()
     let rndTwo = chracterRandomizer(1).trim()
 
-    if (rndOne == rndTwo){
+    if (rndOne == rndTwo){   
         playerRandomizerFuc()
-    }else{ 
+    }else{
         document.getElementById("character_custom_one").value = rndOne
         document.getElementById("character_custom_two").value = rndTwo
     }
@@ -845,11 +856,12 @@ function visVisble(name) {
     let elementId = document.getElementById(name);
     elementId.style.visibility = "visible"
 }
+
 function visHidden(name) {
     let elementId = document.getElementById(name);
     elementId.style.visibility = "hidden"
-
 }
+
 function startFadeIn(index){
     let box_area = document.getElementsByClassName("box_area")
     if(index < box_area.length){
@@ -860,6 +872,7 @@ function startFadeIn(index){
         }, 150);
     }
 }
+
 //HTML Templates
 const gameModeHTML = 
                     `<div  class='main_board' id='welcome_grid'>
